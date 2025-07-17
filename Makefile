@@ -18,6 +18,9 @@ install:
 	uv venv
 	@echo "--- Syncing dependencies from pyproject.toml ---"
 	uv sync
+	@echo "--- Creating data directory ---"
+	mkdir data
+	@echo "Directory created. You need to download the SRAG CSV file and place it in the data directory, and rename it to srag_data.csv"
 
 # Runs the Python script to process and load data into the database
 load-data:
@@ -36,7 +39,7 @@ agent:
 
 # Run the Streamlit dashboard	
 streamlit:
-	@echo "--- Running Streamlit dashboard (venv + native Streamlit) ---"
+	@echo "--- Running Streamlit dashboard ---"
 	. .venv/bin/activate && streamlit run report/app.py
 
 # Run all unit tests (pytest or custom)
