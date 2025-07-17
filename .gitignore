@@ -1,0 +1,12 @@
+*.pdf
+!diagram.pdf
+*.csv
+.python-version
+*.lock
+.venv
+*.db-journal
+*.db
+*.pyc
+.env
+*.log
+data_quality_report.md

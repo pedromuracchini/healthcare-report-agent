@@ -1,0 +1,57 @@
+---
+title: Arquitetura - SRAG HealthCare Agent
+description: Diagrama conceitual da arquitetura do agente epidemiológico
+---
+flowchart TD
+    subgraph Usuario
+        U["Usuário (Dashboard/Streamlit)"]
+    end
+    subgraph Orquestrador
+        A["Agente Principal (LangGraph)"]
+    end
+    subgraph Tools
+        T1["SQLQueryTool - Consulta Banco de Dados"]
+        T2["NewsTool - Busca Notícias"]
+        T3["SummaryTool  - Resumo Executivo"]
+    end
+    subgraph LLM
+        L["LLM"]
+    end
+    subgraph Dados
+        DB["Banco de Dados SRAG (SQLite)"]
+    end
+    subgraph Noticias
+        N["Fontes de Notícias (Tavily)"]
+    end
+    U -->|"Pergunta"| A
+    A -->|"Decisão/Orquestração"| T1
+    A -->|"Decisão/Orquestração"| T2
+    A -->|"Decisão/Orquestração"| T3
+    T1 -->|"Query SQL"| DB
+    DB -->|"Resultados"| T1
+    T2 -->|"Busca"| N
+    N -->|"Notícias"| T2
+    T3 -->|"Chama métricas, notícias e LLM"| L
+    T3 -->|"Consulta banco e notícias"| T1
+    T3 -->|"Consulta banco e notícias"| T2
+    T1 -->|"Dados para resumo"| T3
+    T2 -->|"Notícias para resumo"| T3
+    T1 -->|"Pode acionar LLM para explicação"| L
+    T2 -->|"Pode acionar LLM para sumarização"| L
+    A -->|"Prompt, validação, explicação"| L
+    L -->|"Resposta gerada"| A
+    A -->|"Resposta final"| U
+    style A fill:#cfc,stroke:#333,stroke-width:2px
+    style T1 fill:#ccf,stroke:#333
+    style T2 fill:#ccf,stroke:#333
+    style T3 fill:#ccf,stroke:#333
+    style L fill:#ffc,stroke:#333
+    style DB fill:#eee,stroke:#333
+    style N fill:#eee,stroke:#333
+    style U fill:#fff,stroke:#333
+
+%% Legenda:
+%% - O agente principal orquestra o fluxo, decide qual Tool acionar.
+%% - As Tools acessam banco, notícias ou LLM conforme necessário.
+%% - O LLM pode ser chamado para sumarização, explicação ou geração de SQL.
+%% - O usuário interage apenas com o agente, via dashboard.

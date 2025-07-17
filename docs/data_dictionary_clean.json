@@ -1,0 +1,156 @@
+[
+  {
+    "field_name": "DT_SIN_PRI",
+    "full_description": "Date of first symptoms of the case.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Required field. The date must be less than or equal to the entry and form filling date."
+  },
+  {
+    "field_name": "DT_NOTIFIC",
+    "full_description": "Date of notification form completion.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Required field. The date must be less than or equal to the entry date."
+  },
+  {
+    "field_name": "DT_INTERNA",
+    "full_description": "Date when the patient was hospitalized.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Required field. The date must be greater than or equal to the date of first symptoms."
+  },
+  {
+    "field_name": "EVOLUCAO",
+    "full_description": "Case outcome.",
+    "data_type": "Varchar2(1)",
+    "value_options": "1-Cured, 2-Death, 3-Death by other causes, 9-Ignored",
+    "notes": "Essential field."
+  },
+  {
+    "field_name": "DT_EVOLUCA",
+    "full_description": "Date of discharge or death.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Essential field. Enabled if the case outcome is Cured or Death."
+  },
+  {
+    "field_name": "UTI",
+    "full_description": "Was the patient admitted to ICU?",
+    "data_type": "Varchar2(1)",
+    "value_options": "1-Yes, 2-No, 9-Ignored",
+    "notes": "Essential field."
+  },
+  {
+    "field_name": "DT_ENTUTI",
+    "full_description": "Date of ICU admission.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Essential field. Enabled if the patient was admitted to ICU."
+  },
+  {
+    "field_name": "DT_SAIDUTI",
+    "full_description": "Date of ICU discharge.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Essential field. Enabled if the patient was admitted to ICU."
+  },
+  {
+    "field_name": "SUPORT_VEN",
+    "full_description": "Did the patient use ventilatory support?",
+    "data_type": "Varchar2(1)",
+    "value_options": "1-Yes, invasive, 2-Yes, non-invasive, 3-No, 9-Ignored",
+    "notes": "Essential field."
+  },
+  {
+    "field_name": "VACINA_COV",
+    "full_description": "Did the patient receive COVID-19 vaccine?",
+    "data_type": "Varchar(1)",
+    "value_options": "1-Yes, 2-No, 9-Ignored",
+    "notes": "Required field."
+  },
+  {
+    "field_name": "DOSE_1_COV",
+    "full_description": "Date of 1st COVID-19 vaccine dose.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Essential field. Enabled if the patient received COVID-19 vaccine."
+  },
+  {
+    "field_name": "DOSE_2_COV",
+    "full_description": "Date of 2nd COVID-19 vaccine dose.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Essential field. Enabled if the patient received COVID-19 vaccine."
+  },
+  {
+    "field_name": "DOSE_REF",
+    "full_description": "Date of COVID-19 booster dose.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Essential field. Enabled if the patient received COVID-19 vaccine."
+  },
+  {
+    "field_name": "VACINA",
+    "full_description": "Was the patient vaccinated against flu in the last campaign?",
+    "data_type": "Varchar2(1)",
+    "value_options": "1-Yes, 2-No, 9-Ignored",
+    "notes": "Essential field."
+  },
+  {
+    "field_name": "DT_UT_DOSE",
+    "full_description": "Date of last flu vaccine dose taken by the patient.",
+    "data_type": "Date DD/MM/YYYY",
+    "value_options": "N/A",
+    "notes": "Essential field. Enabled if the patient was vaccinated against flu."
+  },
+  {
+    "field_name": "CLASSI_FIN",
+    "full_description": "Final case diagnosis.",
+    "data_type": "Varchar2(1)",
+    "value_options": "1-SRAG by influenza, 2-SRAG by other respiratory virus, 3-SRAG by other etiological agent, 4-SRAG unspecified, 5-SRAG by COVID-19",
+    "notes": "Required field."
+  },
+  {
+    "field_name": "HOSPITAL",
+    "full_description": "Was the patient hospitalized?",
+    "data_type": "Varchar2(1)",
+    "value_options": "1-Yes, 2-No, 9-Ignored",
+    "notes": "Essential field. The system warns if the value is not 'Yes', as the record may not meet the case definition."
+  },
+  {
+    "field_name": "NU_IDADE_N",
+    "full_description": "Age reported by the patient when date of birth is unknown.",
+    "data_type": "Varchar2(3)",
+    "value_options": "N/A",
+    "notes": "Required field. Age should be automatically calculated if date of birth is provided."
+  },
+  {
+    "field_name": "CS_SEXO",
+    "full_description": "Patient's sex.",
+    "data_type": "Varchar2(1)",
+    "value_options": "M-Male, F-Female, I-Ignored",
+    "notes": "Required field."
+  },
+  {
+    "field_name": "CO_MUN_RES",
+    "full_description": "Patient's municipality of residence (IBGE code).",
+    "data_type": "Varchar2(6)",
+    "value_options": "IBGE municipality code",
+    "notes": "Required if country of residence is Brazil."
+  },
+  {
+    "field_name": "FATOR_RISC",
+    "full_description": "Does the patient have any risk factor?",
+    "data_type": "Varchar2(1)",
+    "value_options": "1-Yes, 2-No, 9-Ignored",
+    "notes": "Essential field."
+  },
+  {
+    "field_name": "CS_RACA",
+    "full_description": "Patient's race/color code.",
+    "data_type": "Varchar2(2)",
+    "value_options": "1-White, 2-Black, 3-Yellow, 4-Brown, 5-Indigenous, 9-Ignored",
+    "notes": "Essential demographic field. Coded as per Brazilian standards."
+  }
+]
